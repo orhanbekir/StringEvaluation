@@ -8,6 +8,11 @@ namespace EvaluationLib
 {
     interface IEvaluation
     {
+        double EvaluateExpression(string expression);
+        bool IsNumber(char ch);
+        bool IsPriority(char currentOperant, char prevOperant);
+        int GetOperandPriority(char ch);
+        double Calculate(char oprator, double secondNumber, double firstNumber);
 
     }
 }

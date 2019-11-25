@@ -52,7 +52,7 @@ namespace EvaluationCalculatorApiTest
         }
 
         [TestMethod]
-        public void Calculate_Three_Multi_Five()
+        public void Calculate_3_Mult_5_Result_15()
         {
             Evaluation eval = new Evaluation(operands);
             double result = eval.Calculate('*',3,5);
