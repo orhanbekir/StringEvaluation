@@ -83,5 +83,13 @@ namespace EvaluationCalculatorApiTest
                 eval.EvaluateExpression("3^5");
             });
         }
+
+        [TestMethod]
+        public void GetOperandPriority_Plus_Return_2()
+        {
+            Evaluation eval = new Evaluation(operands);
+            int result = eval.GetOperandPriority((char)Enums.Operand.Addition);
+            Assert.AreEqual(2, result);
+        }
     }
 }

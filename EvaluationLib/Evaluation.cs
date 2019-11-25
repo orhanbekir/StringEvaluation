@@ -87,25 +87,42 @@ namespace EvaluationLib
         /// <returns></returns>
         public bool IsPriority(char currentOperant, char prevOperant)
         {
-            if ((currentOperant == '*' || currentOperant == '/') && (prevOperant == '+' || prevOperant == '-'))
-            {
+            if (GetOperandPriority(currentOperant) > GetOperandPriority(prevOperant))
+                return true;
+            else if (GetOperandPriority(currentOperant) < GetOperandPriority(prevOperant))
                 return false;
-            }
 
             return true;
         }
 
+        public int GetOperandPriority(char ch)
+        {
+            if (ch == (char)Enums.Operand.Multiplication || ch == (char)Enums.Operand.Division)
+                return (int)Enums.Priority.MultDiv;
+            else if (ch == (char)Enums.Operand.Addition || ch == (char)Enums.Operand.Subtraction)
+                return (int)Enums.Priority.PlusMinus;
+            else
+                return (int)Enums.Priority.Default;
+        }
+
+        /// <summary>
+        /// Calculates Two numbers with operands
+        /// </summary>
+        /// <param name="oprator"></param>
+        /// <param name="secondNumber"></param>
+        /// <param name="firstNumber"></param>
+        /// <returns></returns>
         public double Calculate(char oprator, double secondNumber, double firstNumber)
         {
             switch (oprator)
             {
-                case '+':
+                case (char)Enums.Operand.Addition:
                     return firstNumber + secondNumber;
-                case '-':
+                case (char)Enums.Operand.Subtraction:
                     return firstNumber - secondNumber;
-                case '*':
+                case (char)Enums.Operand.Multiplication:
                     return firstNumber * secondNumber;
-                case '/':
+                case (char)Enums.Operand.Division:
                     if (secondNumber == 0)
                     {
                         throw new DivideByZeroException();
