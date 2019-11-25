@@ -31,7 +31,7 @@ namespace EvaluationLib
         {
             Stack<double> numbers = new Stack<double>();//Stored our numbers
             Stack<char> operators = new Stack<char>();//Stored our operands
-            char[] tokens = expression.ToCharArray();
+            char[] tokens = expression.Trim().ToCharArray();
 
             for (int i = 0; i < tokens.Length; i++)
             {
